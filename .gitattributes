@@ -1,0 +1,15 @@
+# Normalize line endings: LF in the repo, regardless of OS
+* text=auto eol=lf
+
+# Binary assets: never touch
+*.webp binary
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.woff2 binary
+
+# Generated files: hide from diffs and language stats
+package-lock.json -diff linguist-generated
+*.lock -diff linguist-generated
