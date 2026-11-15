@@ -1,100 +1,56 @@
-# 🖥️ Windows XP Portfolio
+# Windows XP Clone
 
-A nostalgic **personal portfolio website** inspired by the classic **Windows XP desktop interface**.
-Instead of a traditional website layout, this project recreates the experience of navigating a computer desktop.
+Kloning bergaya Windows XP yang berjalan penuh di browser, dibangun dengan React 19, TypeScript, dan Vite. Proyek penggemar untuk nostalgia, tidak berafiliasi dengan Microsoft. Ikon aplikasi dan suara dibuat ulang secara orisinal (SVG dan WebAudio). Wallpaper Bliss dan logo Windows XP (`src/assets/`, `public/favicon.ico`) adalah aset yang disediakan pemilik repo; hak ciptanya milik Microsoft, jadi gunakan hanya untuk proyek nonkomersial.
 
-Users can explore the portfolio by **clicking desktop icons**, similar to opening folders in an operating system.
+## Fitur
 
----
+- Boot, login, log off, restart, dan shutdown
+- Window manager: drag, resize, minimize, maximize, urutan z, taskbar, show desktop
+- Start menu dengan All Programs, Run, dan pintasan
+- Desktop: ikon, seleksi kotak, menu klik kanan, rename, drag ke Recycle Bin
+- Virtual file system (disimpan di IndexedDB) dengan Recycle Bin dan Restore
+- Aplikasi: Explorer, Notepad, Paint, Calculator, Minesweeper, Solitaire, Internet Explorer, Media Player, Command Prompt, Task Manager, Control Panel, Display Properties, About, Run
+- Tema Blue, Olive, Silver dan wallpaper CSS
+- Suara sistem hasil sintesis WebAudio
 
-## ✨ Features
+## Menjalankan
 
-* 🖥️ Windows XP style desktop interface
-* 📁 Interactive desktop icons
-* 📂 Portfolio and project folders
-* 👤 About me section
-* 🗂 Organized project showcase
-* ♻️ Recycle bin element for realism
-* 🟢 Classic start button inspired navigation
-
----
-
-## 📸 Preview
-
-![Preview](preview.png)
-
----
-
-## 📁 Sections
-
-The desktop contains several interactive folders:
-
-* **My Portfolio** → Main portfolio showcase
-* **Projects** → List of projects and works
-* **About Me** → Personal information
-* **Recycle Bin** → Decorative UI element
-
----
-
-## 🛠️ Built With
-
-* HTML5
-* CSS3
-* JavaScript
-
----
-
-## 🚀 Getting Started
-
-Clone this repository:
-
-```bash
-git clone https://github.com/yourusername/windows-xp-portfolio.git
+```
+npm install
+npm run dev
 ```
 
-Open the project folder:
+Skrip lain:
 
-```bash
-cd windows-xp-portfolio
+| Perintah | Fungsi |
+| --- | --- |
+| `npm run build` | Typecheck dan build produksi ke `dist/` |
+| `npm run preview` | Menjalankan hasil build |
+| `npm run typecheck` | Pemeriksaan tipe TypeScript |
+| `npm run lint` | ESLint |
+| `npm test` | Tes unit Vitest |
+
+## Struktur
+
+```
+src/
+  core/        store, VFS, window manager (os.ts), suara, metadata aplikasi
+  components/  Window, Taskbar, StartMenu, Desktop, ContextMenu, Dialogs, Screens, Icon
+  apps/        satu berkas per aplikasi, logika murni dipisah (*Logic.ts)
+  styles/      base.css, shell.css, apps.css
+  test/        tes unit untuk logika murni
 ```
 
-Run the project by opening:
+Logika murni (VFS, kalkulator, Minesweeper, Solitaire, Command Prompt, flood fill Paint, normalisasi URL, WAV) dipisah dari UI agar mudah diuji tanpa browser.
 
-```bash
-index.html
-```
+## Deploy
 
-in your browser.
+`base: './'` sudah diatur, jadi hasil `dist/` dapat dipublikasikan ke GitHub Pages atau Vercel tanpa konfigurasi tambahan.
 
----
+## Catatan
 
-## 🎯 Purpose
+Internet Explorer memakai iframe, sehingga banyak situs menolak tampil di dalamnya (kebijakan X-Frame-Options). Halaman `about:home` selalu berfungsi.
 
-This project was created to:
+## Lisensi
 
-* Showcase personal projects in a **creative and nostalgic way**
-* Practice **UI/UX design with unique concepts**
-* Demonstrate **front-end development skills**
-
----
-
-## 📌 Future Improvements
-
-* Window dragging system
-* Minimize / maximize window feature
-* Mobile responsive version
-* Sound effects for UI interactions
-
----
-
-## 📄 License
-
-This project is licensed under the **MIT License**.
-
----
-
-## 👨‍💻 Author
-
-Created by **Your Name**
-
-If you like this project, feel free to ⭐ the repository.
+MIT. Windows adalah merek dagang Microsoft Corporation; proyek ini tidak berafiliasi atau didukung oleh Microsoft.
